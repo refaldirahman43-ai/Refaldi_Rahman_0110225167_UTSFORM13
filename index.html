@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Form Sivitas Akademika Modern</title>
+  <style>
+    
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      max-width: 450px;
+      width: 100%;
+    }
+    h3 {
+      margin-bottom: 25px;
+      font-weight: 700;
+      color: #222;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    /* Search bar style */
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .search-wrapper input[type="text"] {
+      width: 100%;
+      padding: 12px 45px 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    .search-wrapper input[type="text"]:focus {
+      outline: none;
+      border-color: #4f46e5; /* Indigo 600 */
+      box-shadow: 0 0 5px rgba(79,70,229,0.5);
+    }
+    .search-wrapper svg {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      fill: #9ca3af; /* gray-400 */
+    }
+    
+    /* Form layout */
+    form label {
+      display: block;
+      font-weight: 600;
+      color: #374151; /* gray-700 */
+      margin-bottom: 8px;
+      margin-top: 18px;
+    }
+    form input[type="text"],
+    form input[type="file"],
+    form select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.8px solid #cbd5e1; /* gray-300 */
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s ease;
+    }
+    form input[type="text"]:focus,
+    form input[type="file"]:focus,
+    form select:focus {
+      border-color: #4f46e5;
+      outline: none;
+      box-shadow: 0 0 4px rgba(79,70,229,0.6);
+    }
+    
+  
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .radio-group label {
+      font-weight: 500;
+      color: #4b5563; 
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+    }
+    .radio-group input[type="radio"] {
+      accent-color: #4f46e5; 
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+
+   
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 12px 0;
+      background-color: #4f46e5;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(79,70,229,0.4);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #4338ca;
+    }
+
+    
+    input[type="file"] {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Cari Sivitas Akademika</h3>
+    <div class="search-wrapper">
+      <input type="text" placeholder="search" id="searchInput" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/>
+      </svg>
+    </div>
+
+    <form id="formSivitas" enctype="multipart/form-data">
+      <label for="namaLengkap">Nama Lengkap : </label>
+      <input type="text" id="namaLengkap" name="namaLengkap" placeholder="Nama Mahasiswa / Dosen" required />
+
+      <label for="asalProdi">Asal Prodi : </label>
+      <input type="text" id="asalProdi" name="asalProdi" placeholder="Asal Prodi" required />
+
+      <label for="status">Status</label>
+      <select id="status" name="status" required>
+        <option value="" disabled selected>Mahasiswa / Dosen</option>
+        <option value="Mahasiswa">Mahasiswa</option>
+        <option value="Dosen">Dosen</option>
+      </select>
+
+      <label>Jenis Kendaraan :</label>
+      <div class="radio-group">
+        <label><input type="radio" name="jenisKendaraan" value="Motor" checked /> Motor</label>
+        <label><input type="radio" name="jenisKendaraan" value="Mobil" /> Mobil</label>
+      </div>
+
+      <label for="noPol">NoPol</label>
+      <input type="text" id="noPol" name="noPol" required />
+
+      <label for="merk">Merk</label>
+      <input type="text" id="merk" name="merk" required />
+
+      <label for="uploadSTNK">Upload STNK</label>
+      <input type="file" id="uploadSTNK" name="uploadSTNK" accept=".jpg,.jpeg,.png,.pdf" required />
+
+      <button type="submit">Daftar</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('formSivitas').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Form submitted!');
+      
+    });
+
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      console.log('Searching for:', e.target.value);
+      
+    });
+  </script>
+</body>
+</html>
